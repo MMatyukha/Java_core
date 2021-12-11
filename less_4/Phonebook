@@ -1,24 +1,23 @@
 import java.util.*;
 
-public class Phonebook {
+class Directory {
+    private Map<String, List<String>> directory_hm = new HashMap<>();
+    private List<String> phone_number_list;
 
-    private Map<Integer, String> phonebook;
-    Phonebook() {
-        phonebook = new HashMap<>();
-    }
-    public void add(int number, String surname) {
-        phonebook.put(number, surname);
-    }
-    public void get(String surname){
-        if(phonebook.containsValue(surname)) {
-            Set<Map.Entry<Integer, String>> set = phonebook.entrySet();
-            for (Map.Entry<Integer, String> temp : set) {
-                if(temp.getValue().equals(surname)) {
-                    System.out.println(temp.getValue() + " : " + temp.getKey());
-                }
-            }
+    public void add(String surname, String phone_number) {
+        if (directory_hm.containsKey(surname)) {
+            phone_number_list = directory_hm.get(surname);
+            phone_number_list.add(phone_number);
+            directory_hm.put(surname, phone_number_list);
         } else {
-            System.out.println("Such a name is not on the list.");
+            phone_number_list = new ArrayList<>();
+            phone_number_list.add(phone_number);
+            directory_hm.put(surname, phone_number_list);
         }
     }
+
+    public List<String> get(String surname) {
+        return directory_hm.get(surname);
+    }
+
 }
