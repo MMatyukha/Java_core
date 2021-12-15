@@ -4,7 +4,7 @@ public class GenerateCsv
 {
    public static void main(String [] args)
    {
-    generateCsvFile("d:\\test.csv"); 
+    generateCsvFile("с:\\test.csv"); 
    }
  
    private static void generateCsvFile(String sFileName)
